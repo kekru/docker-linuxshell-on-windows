@@ -9,7 +9,7 @@ Build the image:
 `git clone https://github.com/kekru/docker-shell-for-work.git`  
 `docker build -t shell docker-shell-for-work`  
 
-Then open RegisterContextMenu.reg with a double-click. After that, you'll find a "Docker Shell"-entry in your Explorer's context menu, when you click on an empty space in a directory.  
+Then open `RegisterContextMenu.reg` with a double-click. After that, you'll find a "Docker Shell"-entry in your Explorer's context menu, when you click on an empty space in a directory.  
 The shell will open and your current directory is  mounted in /data inside the shell's container.
 
 ## Remove context menu entry  
