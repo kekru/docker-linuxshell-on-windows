@@ -1,5 +1,8 @@
 FROM ubuntu
 
+ENV gitemail="kevin@whiledo.de" \
+    gitname="Kevin Krummenauer"
+
 WORKDIR /data
 RUN apt-get update && apt-get install -y \
     iputils-ping \
@@ -8,33 +11,24 @@ RUN apt-get update && apt-get install -y \
     wget \
     curl \
     jq \
-    nano
-
-
-
-RUN apt-get install -y \
+    nano \
+	vim \
     git \
     fish
 
+RUN mkdir --parents /ressources/docker-client \ 
+ && curl https://get.docker.com/builds/Linux/i386/docker-latest.tgz | tar xvz --directory /ressources/docker-client \
+ && mv /ressources/docker-client/docker/docker /usr/local/bin/docker \
+ && chmod +x /usr/local/bin/docker \
 
-RUN mkdir --parents /download/docker-client \ 
- && curl https://get.docker.com/builds/Linux/i386/docker-latest.tgz | tar xvz --directory /download/docker-client
+ && curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
+ && chmod +x /usr/local/bin/docker-compose \
 
-RUN mv /download/docker-client/docker/docker /usr/local/bin/docker \
- && chmod +x /usr/local/bin/docker
-
-RUN curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
- && chmod +x /usr/local/bin/docker-compose
-
-RUN mkdir --parents ~/.config/fish/completions \
- && mv /download/docker-client/docker/completion/fish/docker.fish ~/.config/fish/completions
+ && mkdir --parents ~/.config/fish/completions \
+ && mv /ressources/docker-client/docker/completion/fish/docker.fish ~/.config/fish/completions
 
 
-ENV gitemail="kevin@whiledo.de" \
-    gitname="Kevin Krummenauer"
+RUN chmod +x /ressources/entrypoint.sh
 
-RUN git config --global user.email "$gitemail" \
- && git config --global user.name "$gitname"
-
-
+ENTRYPOINT /ressources/entrypoint.sh
 CMD fish
