@@ -1,8 +1,8 @@
 # Linux shell on Windows inside a container
-Get a Linux-Shell on Windows, by starting this image in Docker for Windows. Currently using fish.
+Get a Linux-Shell on Windows, by starting this image in Docker for Windows. Currently using fish shell.
 
 ## Install
-Be sure, that you can run docker-Commands on you local shell.  
+Be sure, that you can run docker-Commands on your local windows command line.  
 This is tested with Docker for Windows.  
 
 Build the image:  
