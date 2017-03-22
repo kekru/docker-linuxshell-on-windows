@@ -4,4 +4,4 @@ Windows Registry Editor Version 5.00
 @="Docker Shell"
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\DockerShellKeKru\command]
-@="CMD.EXE /K docker run --rm -it -v %v:/data -v /var/run/docker.sock:/var/run/docker.sock:ro shell"
+@="CMD.EXE /K docker run --rm -it -v \"%v\":/data -v /var/run/docker.sock:/var/run/docker.sock:ro shell"
