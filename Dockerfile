@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     nano \
 	vim \
     git \
-    fish
+    fish \
+	bash-completion
 
 RUN mkdir --parents /resources/docker-client \ 
  && curl https://get.docker.com/builds/Linux/i386/docker-latest.tgz | tar xvz --directory /resources/docker-client \
@@ -25,7 +26,9 @@ RUN mkdir --parents /resources/docker-client \
  && chmod +x /usr/local/bin/docker-compose \
 
  && mkdir --parents ~/.config/fish/completions \
- && mv /resources/docker-client/docker/completion/fish/docker.fish ~/.config/fish/completions
+ && mv /resources/docker-client/docker/completion/fish/docker.fish ~/.config/fish/completions \
+ 
+ && mv /resources/docker-client/docker/completion/bash/docker /etc/bash_completion.d/docker
 
 ADD resources/* /resources/
 RUN chmod +x /resources/entrypoint.sh
