@@ -6,7 +6,7 @@ Be sure, that you can run docker-Commands on your local windows command line.
 This is tested with Docker for Windows.  
 
 Build the image:  
-`git clone https://github.com/kekru/docker-shell-for-work.git`  
+`git clone https://github.com/kekru/docker-linuxshell-on-windows.git`  
 `docker build -t shell docker-shell-for-work`  
 
 Then open `RegisterContextMenu.reg` with a double-click. After that, you'll find a "Docker Shell"-entry in your Explorer's context menu, when you click on an empty space in a directory.  
